@@ -1,0 +1,13 @@
+#################
+## Eclipse
+#################
+
+.settings/
+target/
+
+############
+## Windows
+############
+
+# Windows image file caches
+Thumbs.db
