@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/lombok-presentation-agent-demos/src/test/java/com/tomtresansky/lombokpresentation/agent01/helloworldstatic/TestStaticAgent.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<booleanAttribute key="org.eclipse.jdt.debug.ui.INCLUDE_EXTERNAL_JARS" value="true"/>
+<stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.m2e.launchconfig.classpathProvider"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.tomtresansky.lombokpresentation.agent01.helloworldstatic.TestStaticAgent"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="lombok-presentation-agent-demos"/>
+<stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.m2e.launchconfig.sourcepathProvider"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-javaagent:${workspace_loc:lombok-presentation-agent-demos}/target/lombok-presentation-agent-demos-0.0.1-SNAPSHOT-agent01.jar"/>
+</launchConfiguration>

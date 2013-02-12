@@ -12,7 +12,7 @@
 
   <modules>
       <module>lombok-presentation-demos</module>
-      <module>lombok-presentation-agent-demo</module>
+      <module>lombok-presentation-agent-demos</module>
   </modules>
   
   <properties>

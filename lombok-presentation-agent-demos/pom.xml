@@ -1,0 +1,75 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <artifactId>lombok-presentation</artifactId>
+    <groupId>com.tomtresansky</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>lombok-presentation-agent-demos</artifactId>
+  <packaging>jar</packaging>
+
+  <name>lombok-presentation java agent demos module</name>
+
+  <profiles>
+    <profile>
+      <id>agent01</id>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-jar-plugin</artifactId>
+            <configuration>
+              <classifier>agent01</classifier>
+              <includes>
+                <include>**/agent01/**</include>
+              </includes>
+              <archive>
+                <manifestEntries>
+                  <!-- Have maven create a jar with the Premain-Class line in MANIFEST.MF file. -->
+                  <Premain-Class>com.tomtresansky.lombokpresentation.agent01.helloworldstatic.HelloWorldAgent</Premain-Class>
+                </manifestEntries>
+              </archive>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>agent02</id>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-jar-plugin</artifactId>
+            <configuration>
+              <classifier>agent02</classifier>
+              <includes>
+                <include>**/agent02/**</include>
+              </includes>
+              <archive>
+                <manifestEntries>
+                  <!-- Have maven create a jar with the Agent-Class line in MANIFEST.MF file. -->
+                  <Agent-Class>com.tomtresansky.lombokpresentation.agent02.dynamicload.DynamicallyLoadedAgent</Agent-Class>
+                  <Can-Redefine-Classes>true</Can-Redefine-Classes>
+                  <Can-Retransform-Classes>true</Can-Retransform-Classes>
+                </manifestEntries>
+              </archive>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.sun</groupId>
+      <artifactId>tools</artifactId>
+      <version>1.6.0_18</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/tools.jar</systemPath>
+    </dependency>
+  </dependencies>
+</project>
