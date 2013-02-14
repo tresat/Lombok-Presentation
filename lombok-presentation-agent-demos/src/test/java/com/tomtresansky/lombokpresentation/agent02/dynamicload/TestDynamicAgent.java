@@ -1,5 +1,6 @@
 package com.tomtresansky.lombokpresentation.agent02.dynamicload;
 
+import java.io.File;
 import java.lang.management.ManagementFactory;
 
 import com.sun.tools.attach.VirtualMachine;
@@ -27,6 +28,9 @@ public class TestDynamicAgent {
      */
     final VirtualMachine vm = VirtualMachine.attach(pid);
 
+    final File curDir = new File(TestDynamicAgent.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+
+    System.out.println(curDir);
   }
 
   /**
