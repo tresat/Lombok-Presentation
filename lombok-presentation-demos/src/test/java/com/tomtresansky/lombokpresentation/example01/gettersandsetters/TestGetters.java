@@ -14,19 +14,21 @@ public class TestGetters {
     final Getters g = new Getters("Stanley");
 
     // Use reflection to spit out list of class's methods
-    System.out.printf("Methods of %s:\n\n", g.getClass().getName());
+    System.out.printf("*** Methods of %s:\n", g.getClass().getName());
     for (final Method m : Getters.class.getMethods()) {
       System.out.printf("%s\n", m.toGenericString());
     }
+    System.out.println("***Done.");
 
     // Print its name via call to generated getter
-    System.out.printf("\nCalling generated getName() method: %s", g.getName());
+    System.out.printf("\n***Calling generated getName() method: %s", g.getName());
 
-    // Annotations of getName()?
+    // Is there anything different about the lombok-ed getName() method?  Does it still have the annotation?
     final Method gn = g.getClass().getMethod("getName");
-    System.out.printf("\n\nAnnotations of getName():\n");
+    System.out.printf("\n\n***Annotations of getName():\n");
     for (final Annotation a : gn.getAnnotations()) {
       System.out.printf("%s", a.annotationType()); // Should print nothing!  No annotations on generated method
     }
+    System.out.println("***Done.");
   }
 }
