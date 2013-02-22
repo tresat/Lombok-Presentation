@@ -3,17 +3,22 @@ package com.tomtresansky.lombokpresentation.example01.gettersandsetters;
 import lombok.Getter;
 
 /**
- * This class has no methods...yet a getName() method appears in the Outline
+ * Demonstrates Lombok's @Getter using simplest possible use case.
+ * 
+ * This class has no methods...yet a getFirstName() method appears in the Outline
  * view, inserted via Lombok.
  */
 public class Getters {
-  /**
+  /*
    * No need to write a method, just annotate w/ lombok's {@link Getter}.
    */
   @Getter
-  private String name;
+  public String firstName;
 
-  public Getters(final String name) {
-    this.name = name;
+  /*
+   * Constructor stores first name, so we have something to return.
+   */
+  public Getters(final String firstName) {
+    this.firstName = firstName;
   }
 }
