@@ -4,9 +4,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import lombok.Getter;
-
-/**
+/*
  * Demonstrates usage of {@link Getter}.
  */
 public class TestGetters {
