@@ -6,11 +6,11 @@ import lombok.Data;
  * Demonstrate delomboking.
  */
 @Data
-public class DelombokGettersAndSetters {
+public class DelombokMe {
   private final int count;
 
   public static void main(final String... args) {
-    final DelombokGettersAndSetters t = new DelombokGettersAndSetters(7);
+    final DelombokMe t = new DelombokMe(7);
 
     System.out.println("The count is: " + t.getCount());
   }
