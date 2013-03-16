@@ -50,6 +50,11 @@ public class SneakyThrowsUseCases {
    * 
    * If the method calling doSomething just sneakily throws these exceptions, we
    * save a layer of indirection and have less, cleaner source to maintain.
+   * 
+   * Also, suppose we have an error-handling strategy for just one of them, and
+   * want to let the rest propogate, but DON'T want our code to indiscriminately
+   * throw Exception, which might mask if we're also working with code that
+   * could throw an IOException that we could handle better directly.
    */
   public interface OverlySpecificInterface {
     public void doSomething() throws ActivationException, ActivateFailedException, UnknownGroupException, UnknownObjectException;
