@@ -58,8 +58,7 @@ public class CleanCopier {
   }
 
   public static void copyWithLombok(final String inFile, final String outFile) throws IOException {
-    @Cleanup
-    final InputStream in = new FileInputStream(inFile);
+    @Cleanup final InputStream in = new FileInputStream(inFile);
     @Cleanup final OutputStream out = new FileOutputStream(outFile);
 
     final byte[] b = new byte[10000];
