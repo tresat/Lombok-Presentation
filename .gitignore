@@ -1,13 +1,19 @@
 #################
-## Eclipse
+## Eclipse ######
 #################
 
 .settings/
 target/
 
-############
-## Windows
-############
+#################
+## Windows ######
+#################
 
 # Windows image file caches
 Thumbs.db
+
+##################
+## Project #######
+##################
+
+lombok-presentation-demos/manuallycompile/com
