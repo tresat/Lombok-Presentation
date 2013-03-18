@@ -2,14 +2,14 @@ package com.tomtresansky.lombokpresentation.agent02.dynamicload;
 
 import java.io.File;
 import java.lang.management.ManagementFactory;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import com.sun.tools.attach.VirtualMachine;
 
 /**
  * This class demonstrates starting an agent dynamically (attaching to an
- * already running JVM which wasn't started with the -javaagent VM argument.
- * 
- * Agents loaded dynamically can only
+ * already running JVM which wasn't started with the -javaagent VM argument).
  */
 public class TestDynamicAgent {
   public static void main(final String[] args) throws Exception {
@@ -29,8 +29,10 @@ public class TestDynamicAgent {
     final VirtualMachine vm = VirtualMachine.attach(pid);
 
     final File curDir = new File(TestDynamicAgent.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+    final Path agentJar = Paths.get(curDir.getAbsolutePath(), "lombok-presentation-agent-demos-0.0.1-SNAPSHOT-agent02.jar");
+    System.out.println(agentJar);
 
-    System.out.println(curDir);
+    vm.loadAgent(agentJar.toString());
   }
 
   /**
