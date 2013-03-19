@@ -24,7 +24,6 @@
   
   <build>
     <sourceDirectory>target/generated-sources/delombok</sourceDirectory>
-    <testSourceDirectory>target/generated-test-sources/delombok</testSourceDirectory>
     <plugins>
       <plugin>
         <groupId>org.projectlombok</groupId>
@@ -40,17 +39,6 @@
             <configuration>
               <addOutputDirectory>false</addOutputDirectory>
               <sourceDirectory>src/main/java</sourceDirectory>
-            </configuration>
-          </execution>
-          <execution>
-            <id>test-delombok</id>
-            <phase>generate-test-sources</phase>
-            <goals>
-              <goal>testDelombok</goal>
-            </goals>
-            <configuration>
-              <addOutputDirectory>false</addOutputDirectory>
-              <sourceDirectory>src/test/java</sourceDirectory>
             </configuration>
           </execution>
         </executions>
