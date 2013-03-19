@@ -7,6 +7,9 @@ import java.lang.instrument.Instrumentation;
  * works.
  */
 public class HelloWorldAgent {
+  /**
+   * The premain method is always the entry point for a staticly loaded agent.
+   */
   public static void premain(final String agentArgument, final Instrumentation instrumentation) {
     System.out.println("premain() method of " + HelloWorldAgent.class.getName() + " running.");
     System.out.println("Hello World!");

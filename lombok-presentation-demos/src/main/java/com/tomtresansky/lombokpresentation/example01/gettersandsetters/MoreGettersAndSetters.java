@@ -2,13 +2,14 @@ package com.tomtresansky.lombokpresentation.example01.gettersandsetters;
 
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 
 /**
  * This class contains various demos of @Getter and @Setter features.
  */
 public class MoreGettersAndSetters {
-  /*
+  /**
    * Lombok's annotations aid in READABILITY - not just save time typing.
    * 
    * For instance, it's easy to see the one "interesting" piece of functionality
@@ -39,7 +40,7 @@ public class MoreGettersAndSetters {
     }
   }
 
-  /*
+  /**
    * ...than it is on this one, which produces functionally identical byte-code,
    * where Eclipse created them via rightclick, Source -> Generate Getters and
    * Setters.
@@ -107,7 +108,7 @@ public class MoreGettersAndSetters {
     }
   }
 
-  /*
+  /**
    * These annotations can also be used on the class directly, which applies
    * them to all non-static fields. This yields great information density - this
    * class is also equivalent to the above classes!
@@ -126,10 +127,10 @@ public class MoreGettersAndSetters {
     }
   }
 
-  /*
+  /**
    * Can specify access modifiers for generated methods.
    */
-  private static class Turtle {
+  private static class Turtle1 {
     @Getter
     @Setter(AccessLevel.PACKAGE)
     private String name;
@@ -143,7 +144,7 @@ public class MoreGettersAndSetters {
     private String color;
   }
 
-  /*
+  /**
    * Can override class-level annotations at field-level: make everything
    * public (the default) except for X.
    */
@@ -159,7 +160,7 @@ public class MoreGettersAndSetters {
     private boolean ninja;
   }
 
-  /*
+  /**
    * Lombok respects methods already in place, in cases when special processing is required.
    */
   @Getter
@@ -197,6 +198,23 @@ public class MoreGettersAndSetters {
 
     private static void ninjaTest(final Turtle3 turtle) {
       System.out.println(turtle.getName() + " (" + turtle.getColor() + ") weight " + turtle.getWeight() + " pounds.");
+    }
+  }
+
+  /**
+   * Lombok is smart enough to understand any annotation named {@code @NonNull},
+   * in any package, with any casing, to mean that a field should NOT hold a null
+   * value, and to insert a nullcheck into generated setter calls.
+   */
+  @Getter
+  @Setter
+  private static class Turtle4 {
+    @NonNull
+    private String name;
+
+    public static void main(final String... args) {
+      final Turtle4 turtle = new Turtle4();
+      turtle.setName(null); // Fails!
     }
   }
 }

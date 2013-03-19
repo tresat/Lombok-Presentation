@@ -32,19 +32,23 @@ public class TestGetters {
     }
     System.out.println("*** Done.");
 
-    // Is there anything different about the firstName field?  Does it still have the annotation?
+    // Is there anything different about the firstName field?
+    // Does it still have the annotation?
     final Field fn = Getters.class.getField("firstName");
     System.out.printf("\n*** Annotations of firstName field:\n");
     for (final Annotation a : fn.getAnnotations()) {
-      System.out.printf("%s\n", a.annotationType()); // Should print nothing!  No annotations left on the field.
+      // Should print nothing!  No annotations left on the field.
+      System.out.printf("%s\n", a.annotationType());
     }
     System.out.println("*** Done.");
 
-    // Is there anything different about the lombok-ed getFirstName() method?  Does it have the annotation?
+    // Is there anything different about the lombok-ed getFirstName() method?
+    // Does it have the annotation?
     final Method gfn = Getters.class.getMethod("getFirstName");
     System.out.printf("\n*** Annotations of getFirstName():\n");
     for (final Annotation a : gfn.getAnnotations()) {
-      System.out.printf("%s\n", a.annotationType()); // Should print nothing!  No annotations on generated method.
+      // Should print nothing!  No annotations on generated method.
+      System.out.printf("%s\n", a.annotationType());
     }
     System.out.println("*** Done.");
   }
@@ -54,22 +58,22 @@ public class TestGetters {
  * To demo outside of eclipse: Be sure to have run Maven test build beforehand to generate classes!
  * 
  * Enter directory from command line
- * cd C:\Users\Tom\Programming\Projects\lombok-presentation\lombok-presentation-demos
+cd C:\Users\Tom\Programming\Projects\lombok-presentation\lombok-presentation-demos
  * 
  * Show resulting class info generated from eclipse
- * javap -cp target\classes com.tomtresansky.lombokpresentation.example01.gettersandsetters.Getters
+javap -cp target\classes com.tomtresansky.lombokpresentation.example01.gettersandsetters.Getters
  * 
  * 
  * 
  * Now show compilation without eclipse: Be sure to first clear manuallycompile directory of all but lombok jar
  * 
  * Compile classes manually
- * javac -cp manuallycompile/lombok-0.11.6.jar src/main/java/com/tomtresansky/lombokpresentation/example01/gettersandsetters/Getters.java -d manuallycompile
- * javac -cp manuallycompile;manuallycompile/lombok-0.11.6.jar src/test/java/com/tomtresansky/lombokpresentation/example01/gettersandsetters/TestGetters.java -d manuallycompile
+javac -cp manuallycompilelib/lombok-0.11.6.jar;manuallycompile src/main/java/com/tomtresansky/lombokpresentation/example01/gettersandsetters/Getters.java -d manuallycompile
+javac -cp manuallycompilelib/lombok-0.11.6.jar;manuallycompile src/test/java/com/tomtresansky/lombokpresentation/example01/gettersandsetters/TestGetters.java -d manuallycompile
  * 
  * Show resulting class info
- * javap -cp "manuallycompile" com.tomtresansky.lombokpresentation.example01.gettersandsetters.Getters
+javap -cp manuallycompile com.tomtresansky.lombokpresentation.example01.gettersandsetters.Getters
  * 
  * Run it!
- * java -cp manuallycompile com.tomtresansky.lombokpresentation.example01.gettersandsetters.TestGetters
+java -cp manuallycompile com.tomtresansky.lombokpresentation.example01.gettersandsetters.TestGetters
  */

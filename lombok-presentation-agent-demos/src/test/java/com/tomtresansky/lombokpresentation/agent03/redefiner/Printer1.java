@@ -1,4 +1,4 @@
-package com.tomtresansky.lombokpresentation.agent02.dynamicload;
+package com.tomtresansky.lombokpresentation.agent03.redefiner;
 
 public class Printer1 {
   private String name;

@@ -52,7 +52,28 @@
                 <manifestEntries>
                   <!-- Have maven create a jar with the Agent-Class line in MANIFEST.MF file. -->
                   <Agent-Class>com.tomtresansky.lombokpresentation.agent02.dynamicload.DynamicallyLoadedAgent</Agent-Class>
-                  <Can-Redefine-Classes>true</Can-Redefine-Classes>
+                </manifestEntries>
+              </archive>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>agent03</id>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-jar-plugin</artifactId>
+            <configuration>
+              <classifier>agent03</classifier>
+              <includes>
+                <include>**/agent03/**</include>
+              </includes>
+              <archive>
+                <manifestEntries>
+                  <!-- Have maven create a jar with the Agent-Class line in MANIFEST.MF file. -->
+                  <Agent-Class>com.tomtresansky.lombokpresentation.agent03.redefiner.RedefiningAgent</Agent-Class>
                   <Can-Retransform-Classes>true</Can-Retransform-Classes>
                 </manifestEntries>
               </archive>

@@ -1,4 +1,4 @@
-package com.tomtresansky.lombokpresentation.agent02.dynamicload;
+package com.tomtresansky.lombokpresentation.agent03.redefiner;
 
 import java.io.File;
 import java.lang.management.ManagementFactory;
@@ -8,10 +8,9 @@ import java.nio.file.Paths;
 import com.sun.tools.attach.VirtualMachine;
 
 /**
- * This class demonstrates starting an agent dynamically (attaching to an
- * already running JVM which wasn't started with the -javaagent VM argument).
+ * Same test driver code as agent 2 demo, except loads agent 3's jar.
  * 
- * The agent can transform classes as they are loaded.
+ * Agent 3's jar can redefine loaded classes, so output will vary.
  */
 public class TestDynamicAgent {
   public static void main(final String[] args) throws Exception {
@@ -38,7 +37,6 @@ public class TestDynamicAgent {
     for (int i = 0; i < 3; i++) {
       p3.print();
     }
-    System.out.println("Done with Printer1.\n");
   }
 
   /**
@@ -66,7 +64,7 @@ public class TestDynamicAgent {
     final VirtualMachine vm = VirtualMachine.attach(pid);
 
     final File curDir = new File(TestDynamicAgent.class.getProtectionDomain().getCodeSource().getLocation().toURI());
-    final Path agentJarPath = Paths.get(curDir.getParent(), "lombok-presentation-agent-demos-0.0.1-SNAPSHOT-agent02.jar");
+    final Path agentJarPath = Paths.get(curDir.getParent(), "lombok-presentation-agent-demos-0.0.1-SNAPSHOT-agent03.jar");
 
     vm.loadAgent(agentJarPath.toString());
     vm.detach();

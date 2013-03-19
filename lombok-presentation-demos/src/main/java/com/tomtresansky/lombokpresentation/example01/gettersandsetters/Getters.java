@@ -3,15 +3,13 @@ package com.tomtresansky.lombokpresentation.example01.gettersandsetters;
 import lombok.Getter;
 
 /**
- * Demonstrates Lombok's @Getter using simplest possible use case.
+ * Demonstrates Lombok's {@link Getter} using simplest possible use case.
  * 
  * This class has no methods...yet a getFirstName() method appears in the Outline
  * view, inserted via Lombok.
  */
 public final class Getters {
-  /**
-   * No need to write a getFirstName() method, just annotate w/ lombok's {@link Getter}.
-   */
+  // No need to write a getFirstName() method, just annotate w/ lombok's {@link Getter}.
   @Getter
   public String firstName;
 

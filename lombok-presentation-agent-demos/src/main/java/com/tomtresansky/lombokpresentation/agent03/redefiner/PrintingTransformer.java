@@ -1,4 +1,4 @@
-package com.tomtresansky.lombokpresentation.agent02.dynamicload;
+package com.tomtresansky.lombokpresentation.agent03.redefiner;
 
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
@@ -18,19 +18,17 @@ import org.objectweb.asm.tree.MethodNode;
 
 /**
  * This class uses the ASM bytecode manipulation library to redefine all methods
- * named "print" in any classes in a package beginning with "com.tomtresansky".
+ * named "print" in any classes in a package beginning with "com.tomtresansky...Printer".
  * 
  * It adds an additional output statement to the print method.
  */
-public class ModifyingTransformer implements ClassFileTransformer {
+public class PrintingTransformer implements ClassFileTransformer {
   @Override
   public byte[] transform(final ClassLoader loader, final String className,
       final Class<?> classBeingRedefined, final ProtectionDomain protectionDomain,
       final byte[] classfileBuffer) throws IllegalClassFormatException {
-    byte[] retVal = null;
-
-    System.out.println("New Class Loaded: " + className);
-    if (className.startsWith("com/tomtresansky")) {
+    // Class name passed as param, only modify certain classes
+    if (className.startsWith("com/tomtresansky/lombokpresentation/agent03/redefiner/Printer")) {
       System.out.println("-Redefining Class: " + className);
 
       final ClassWriter cw = new ClassWriter(0);
@@ -38,12 +36,15 @@ public class ModifyingTransformer implements ClassFileTransformer {
       final ClassReader cr = new ClassReader(classfileBuffer);
 
       cr.accept(ca, 0);
-      retVal = cw.toByteArray();
+      return cw.toByteArray();
+    } else {
+      return null;
     }
-
-    return retVal;
   }
 
+  /**
+   * Class adapter uses ASM bytecode manipulation to insert method call.
+   */
   public class MyClassAdapter extends ClassNode implements Opcodes {
     private ClassVisitor cv;
 
