@@ -18,9 +18,19 @@ public class SneakyThrowsUseCases {
    * must always be available!!!
    * 
    * So if this encoding ISN'T AVAILABLE, your JVM shouldn't even startup!
+   * 
+   * But we still would have to catch it, or use a throws clause to make the compiler happy.
+   */
+  public String impossibleToOccur(final byte[] bytes) throws UnsupportedEncodingException {
+    return new String(bytes, "UTF-8");
+  }
+
+
+  /**
+   * Unless we lombok it into a runtime exception!
    */
   @SneakyThrows(UnsupportedEncodingException.class)
-  public String impossibleToOccur(final byte[] bytes) {
+  public String impossibleToOccurLomboked(final byte[] bytes) {
     return new String(bytes, "UTF-8");
   }
 
@@ -44,7 +54,7 @@ public class SneakyThrowsUseCases {
   }
 
   /**
-   * In real-life, despite the author's best intensions, any use of the
+   * In real-life, despite the author's best intentions, any use of the
    * {@link OverlySpecificInterface#doSomething()} method will get wrapped in a
    * try-catch, with a Runtime Exception popping out if anything fails.
    * 

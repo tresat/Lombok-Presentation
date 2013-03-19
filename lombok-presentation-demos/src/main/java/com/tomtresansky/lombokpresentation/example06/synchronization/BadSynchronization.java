@@ -5,25 +5,27 @@ import lombok.Getter;
 /**
  * Example class with a synchronized method.
  */
-class SynchronizedMethod {
+class BadSynchronizedMethod {
   @Getter
   private int count;
 
   public synchronized void increment() {
-    count++;
+    final int oldcount = count;
+    count = oldcount + 1;
   }
 }
 
 /**
- * Should be equivalent (in terms of locking) as {@link SynchronizedMethod}.
+ * Should be equivalent (in terms of locking) as {@link BadSynchronizedMethod}.
  */
-class SynchronizedMethodEquivalent {
+class BadSynchronizedMethodEquivalent {
   @Getter
   private int count;
 
   public void increment() {
     synchronized(this) {
-      count++;
+      final int oldcount = count;
+      count = oldcount + 1;
     }
   }
 }

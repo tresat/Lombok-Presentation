@@ -12,10 +12,15 @@ import java.util.concurrent.Future;
 
 import org.junit.Test;
 
+/**
+ * Test our synchronization: spawn 1000 threads, each will increment 1000 times.
+ * <p>
+ * If synchronized correctly, should result in 1000000 in count.
+ */
 public final class DemoBadSynchronization {
   @Test
   public void showItWorking() throws InterruptedException {
-    final SynchronizedMethod sm = new SynchronizedMethod();
+    final BadSynchronizedMethod sm = new BadSynchronizedMethod();
 
     // Create collection of one thousand threads
     final Collection<Callable<Integer>> threads = new ArrayList<Callable<Integer>>(100);
@@ -34,7 +39,7 @@ public final class DemoBadSynchronization {
     }
 
     // Submit them
-    final ExecutorService es = Executors.newFixedThreadPool(10);
+    final ExecutorService es = Executors.newFixedThreadPool(100);
     final List<Future<Integer>> results = es.invokeAll(threads);
 
     // Busy wait until all are done
@@ -59,7 +64,7 @@ public final class DemoBadSynchronization {
 
   @Test
   public void showItFailing() throws InterruptedException {
-    final SynchronizedMethod sm = new SynchronizedMethod();
+    final BadSynchronizedMethod sm = new BadSynchronizedMethod();
 
     // Create collection of one thousand threads
     final Collection<Callable<Integer>> threads = new ArrayList<Callable<Integer>>(100);
@@ -76,7 +81,6 @@ public final class DemoBadSynchronization {
         }
       });
     }
-
 
     /*------------------------------------------------------------------------------------ *
      * ---------------------------- ONLY CHANGE ------------------------------------------ *

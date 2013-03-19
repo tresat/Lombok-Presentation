@@ -13,7 +13,7 @@ public class LazyGetters {
   @Getter(lazy=true) // Lazy works with expressions, too!
   private final String alphabet = "A" + "B" + "C" + "D" + "E" + "F" + "G" + "H" + "I" + "J" + "L" + "M" + "N" + "O" + "P" + "Q" + "R" + "S" + "T" + "U" + "V" + "W" + "X" + "Y" + "Z";
 
-  /*
+  /**
    * Computationally expensive Fibbonacci number calculation routine...we don't
    * want to run this until we need to!
    */
@@ -42,7 +42,7 @@ public class LazyGetters {
     System.out.println("\nAccess field correctly, via generated Getter");
     System.out.println("getHundrethFib(): " + lg.getHundrethFib());
 
-    System.out.println("\nSecond field access doesn't result in recalcultion");
+    System.out.println("\nSecond field access doesn't result in recalculation");
     System.out.println("getHundrethFib(): " + lg.getHundrethFib());
 
     System.out.println("\nAccess field initialized to expression directly (DON'T ACTUALLY DO THIS!)");

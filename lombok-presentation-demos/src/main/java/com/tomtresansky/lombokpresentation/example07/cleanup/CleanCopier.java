@@ -5,6 +5,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import lombok.Cleanup;
 
@@ -69,5 +71,9 @@ public class CleanCopier {
       }
       out.write(b, 0, r);
     }
+  }
+
+  public static void canAlsoCleanupWithoutImplementingAutoClosable() {
+    @Cleanup("clear") final List<String> list = new ArrayList<String>();
   }
 }

@@ -12,6 +12,9 @@ import java.util.concurrent.Future;
 
 import org.junit.Test;
 
+/**
+ * Same test code as before, but running the lombok-ed class.
+ */
 public class DemoLombokSynchronization {
   @Test
   public void showItWorkingWithLombok() throws InterruptedException {
@@ -49,7 +52,7 @@ public class DemoLombokSynchronization {
     }).start();
 
     // Submit them
-    final ExecutorService es = Executors.newFixedThreadPool(10);
+    final ExecutorService es = Executors.newFixedThreadPool(100);
     final List<Future<Integer>> results = es.invokeAll(threads);
 
     // Busy wait until all are done

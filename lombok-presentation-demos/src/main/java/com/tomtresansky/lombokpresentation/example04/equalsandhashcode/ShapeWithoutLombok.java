@@ -1,6 +1,6 @@
 package com.tomtresansky.lombokpresentation.example04.equalsandhashcode;
 
-/*
+/**
  * Basic abstract Shape class.
  * 
  * Has an area and a color.

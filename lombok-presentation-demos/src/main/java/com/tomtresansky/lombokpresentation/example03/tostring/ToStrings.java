@@ -1,4 +1,4 @@
-package com.tomtresansky.lombokpresentation.example03;
+package com.tomtresansky.lombokpresentation.example03.tostring;
 
 import lombok.ToString;
 
@@ -8,7 +8,7 @@ import lombok.ToString;
  * Getters/Setters omitted throughout, to simplify code.
  */
 public class ToStrings {
-  /*
+  /**
    * Basic usage.
    */
   @ToString
@@ -30,7 +30,7 @@ public class ToStrings {
     }
   }
 
-  /*
+  /**
    * Omit field names (defaults to including field names).
    */
   @ToString(includeFieldNames=false)
@@ -52,7 +52,7 @@ public class ToStrings {
     }
   }
 
-  /*
+  /**
    * Omit certain fields.
    */
   @ToString(exclude={"doors", "passengers"})
@@ -74,8 +74,10 @@ public class ToStrings {
     }
   }
 
-  /*
+  /**
    * Alternately, specify to only include certain fields.
+   * 
+   * Attempting to add a field which doesn't exist is a warning.
    */
   @ToString(of={"make", "model", "color"})
   private static class Car4 {
@@ -96,7 +98,7 @@ public class ToStrings {
     }
   }
 
-  /*
+  /**
    * If a toString method already exists, do nothing and throw a compiler warning.
    */
   @ToString
@@ -117,7 +119,7 @@ public class ToStrings {
     }
   }
 
-  /*
+  /**
    * Can chain super class calls!
    * 
    * Here is a base class...
@@ -131,7 +133,7 @@ public class ToStrings {
     private String[] passengers = { "Jerry", "George", "Elaine", "Kramer" };
   }
 
-  /*
+  /**
    * Extended here.  The toString should list fields on the super class as well.
    */
   @ToString(callSuper=true)

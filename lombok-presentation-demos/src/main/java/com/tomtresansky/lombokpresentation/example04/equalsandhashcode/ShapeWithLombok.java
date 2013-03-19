@@ -2,7 +2,7 @@ package com.tomtresansky.lombokpresentation.example04.equalsandhashcode;
 
 import lombok.EqualsAndHashCode;
 
-/*
+/**
  * Same fields, same equals and hashCode implementation as other code.
  */
 @EqualsAndHashCode

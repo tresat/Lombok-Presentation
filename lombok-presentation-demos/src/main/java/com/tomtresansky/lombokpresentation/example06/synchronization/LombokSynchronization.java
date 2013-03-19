@@ -12,7 +12,8 @@ class SynchronizedMethodWithLombok {
 
   @Synchronized
   public void increment() {
-    count++;
+    final int oldcount = count;
+    count = oldcount + 1;
   }
 }
 
@@ -31,7 +32,8 @@ class SynchronizedMethodWithoutLombokEquivalent {
 
   public void increment() {
     synchronized ($lock) { // synchronize on private, unexposed and unexposable, forever hidden lock
-      count++;
+      final int oldcount = count;
+      count = oldcount + 1;
     }
   }
 }

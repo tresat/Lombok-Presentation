@@ -3,7 +3,7 @@ package com.tomtresansky.lombokpresentation.example04.equalsandhashcode;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-/*
+/**
  * With lombok, focus on the important parts, ensure that equals and hashCode
  * ALWAYS stay in sync.
  */
