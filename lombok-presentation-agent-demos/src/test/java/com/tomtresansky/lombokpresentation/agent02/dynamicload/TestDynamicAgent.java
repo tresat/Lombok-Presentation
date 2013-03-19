@@ -13,6 +13,22 @@ import com.sun.tools.attach.VirtualMachine;
  */
 public class TestDynamicAgent {
   public static void main(final String[] args) throws Exception {
+    System.out.println("Creating Printer1 and calling print()...");
+    final Printer1 p1 = new Printer1("Sam");
+    p1.print();
+    System.out.println("Done with Printer1.\n");
+
+    System.out.println("Attaching agent dynamically...");
+    attachAgent();
+    System.out.println("Done attaching agent.\n");
+
+    System.out.println("Creating Printer2 and calling print()...");
+    final Printer2 p2 = new Printer2("Max");
+    p2.print();
+    System.out.println("Done with Printer2.\n");
+  }
+
+  private static void attachAgent() throws Exception {
     // Grab the PID from running JVM
     final String pid = getJVMProcessId();
 
@@ -29,10 +45,11 @@ public class TestDynamicAgent {
     final VirtualMachine vm = VirtualMachine.attach(pid);
 
     final File curDir = new File(TestDynamicAgent.class.getProtectionDomain().getCodeSource().getLocation().toURI());
-    final Path agentJar = Paths.get(curDir.getAbsolutePath(), "lombok-presentation-agent-demos-0.0.1-SNAPSHOT-agent02.jar");
-    System.out.println(agentJar);
+    final Path agentJar = Paths.get(curDir.getParent(), "lombok-presentation-agent-demos-0.0.1-SNAPSHOT-agent02.jar");
+    // System.out.println(agentJar);
 
     vm.loadAgent(agentJar.toString());
+    vm.detach();
   }
 
   /**
